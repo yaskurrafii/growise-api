@@ -4,6 +4,7 @@ from django.urls import path, include
 
 router = routers.DefaultRouter()
 router.register(r"login", LoginViewset)
+router.register(r"register", RegisterViewset)
 router.register(r"scraper", ScraperViewset)
 
 urlpatterns = [

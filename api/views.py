@@ -1,18 +1,23 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
-from api.serializer import LoginSerializerPost, RegisterSerializer, ScraperSerializer
+from api.serializer import LoginSerializer, RegisterSerializer,RegisterSerializerPost, ScraperSerializer
 from api.models import LoginModel, ScraperListModel
 
 # Create your views here.
 
-class LoginViewset(ModelViewSet):
-    serializer_class = {"create" : LoginSerializerPost, "default" : RegisterSerializer} 
+class RegisterViewset(ModelViewSet):
+    serializer_class = {"create" : RegisterSerializerPost, "default" : RegisterSerializer}
     queryset = LoginModel.objects.all()
 
     def get_serializer_class(self):
-        if self.action.lower() == 'create':
-            return self.serializer_class[self.action]
+        print(self.action)
+        if self.action == 'create':
+            return self.serializer_class['create']
         return self.serializer_class['default']
+
+class LoginViewset(ModelViewSet):
+    serializer_class = LoginSerializer
+    queryset = LoginModel.objects.all()
 
 
 class ScraperViewset(ModelViewSet):
