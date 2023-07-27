@@ -7,6 +7,8 @@ class LoginModel(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     username = models.CharField(max_length=255)
     password = models.CharField(max_length=255)
+    fullname = models.TextField()
+    email = models.EmailField()
 
 class ScraperListModel(models.Model):
     id = models.IntegerField(primary_key=True)

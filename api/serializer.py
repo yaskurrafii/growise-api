@@ -4,11 +4,12 @@ from api.models import LoginModel, ScraperListModel
 
 class LoginSerializerPost(serializers.ModelSerializer):
     class Meta:
-        exclude = ("id",)
+        fields = ("username", "password")
         model = LoginModel
-class LoginSerializerList(serializers.ModelSerializer):
+
+class RegisterSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = "__all__"
+        exclude = ("id",)
         model = LoginModel
 
 class ScraperSerializer(serializers.ModelSerializer):
